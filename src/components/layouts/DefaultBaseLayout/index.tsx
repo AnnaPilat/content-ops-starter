@@ -2,6 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
+import Script from 'next/script'; // ✅ Правильний імпорт для скриптів у Next.js
 
 export default function DefaultBaseLayout(props) {
     const { page, site } = props;
@@ -16,12 +17,17 @@ export default function DefaultBaseLayout(props) {
                 {site.footer && <Footer {...site.footer} enableAnnotations={enableAnnotations} />}
             </div>
 
-            <script
+            {/* ✅ Додаємо зовнішній скрипт коректно */}
+            <Script
                 async
                 src="https://stage-widget.intelswift.com/script.js?tenantId=835c3375-8bff-4f6b-94d0-dbbd537f5303&botId=67c82ae56381d68d8e0e491e&uuid=70907f9c-aaec-43dc-a0d4-7d82108c376a&end=true"
-            ></script>
+                strategy="afterInteractive"
+            />
 
-            <script
+            {/* ✅ Додаємо inline-скрипт через dangerouslySetInnerHTML */}
+            <Script
+                id="widget-script"
+                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
                         window.onload = function(event) {
