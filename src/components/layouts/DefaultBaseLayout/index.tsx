@@ -19,8 +19,7 @@ export default function DefaultBaseLayout(props) {
 
             {/* ✅ Додаємо зовнішній скрипт коректно */}
             <Script
-            async src="https://stage-widget.intelswift.com/script.js?tenantId=edd30677-c5a4-4db7-a9e2-d2b7076a3e07&botId=67cd4364b8a249f9cc3efa59&uuid=a82cdc57-4b9c-4806-a29b-392d1d3ddf6d&end=true"
-                strategy="afterInteractive"
+async src="https://stage-widget.intelswift.com/script.js?tenantId=edd30677-c5a4-4db7-a9e2-d2b7076a3e07&botId=67cd88af4d8b307d9f412ec7&uuid=a82cdc57-4b9c-4806-a29b-392d1d3ddf6d&end=true"                strategy="afterInteractive"
             />
 
             {/* ✅ Додаємо inline-скрипт через dangerouslySetInnerHTML */}
@@ -29,7 +28,7 @@ export default function DefaultBaseLayout(props) {
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                        window.onload = (event) => {
+window.onload = (event) => {
     const propsInterval = setInterval(widgetTimer, 1000);
 
     function widgetTimer() {
