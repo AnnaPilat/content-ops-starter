@@ -19,7 +19,7 @@ export default function DefaultBaseLayout(props) {
 
             {/* ✅ Додаємо зовнішній скрипт коректно */}
             <Script
-             async src="https://stage-widget.intelswift.com/script.js?tenantId=3a64cd11-b987-407a-bfe8-7395f34ffab1&botId=67c96c606381d68d8e0e5e8a&uuid=ec143e14-19ce-49f9-992e-6113043a7bcb&end=true"
+            async src="https://stage-widget.intelswift.com/script.js?tenantId=edd30677-c5a4-4db7-a9e2-d2b7076a3e07&botId=67cd4364b8a249f9cc3efa59&uuid=a82cdc57-4b9c-4806-a29b-392d1d3ddf6d&end=true"
                 strategy="afterInteractive"
             />
 
