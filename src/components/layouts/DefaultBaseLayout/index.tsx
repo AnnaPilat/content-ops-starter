@@ -19,8 +19,7 @@ export default function DefaultBaseLayout(props) {
 
             {/* ✅ Додаємо зовнішній скрипт коректно */}
             <Script
-async src="https://stage-widget.intelswift.com/script.js?tenantId=edd30677-c5a4-4db7-a9e2-d2b7076a3e07&botId=67cdc5485c1d66930a578624&uuid=a82cdc57-4b9c-4806-a29b-392d1d3ddf6d&end=true"             strategy="afterInteractive"
-            />
+async src="https://stage-widget.intelswift.com/script.js?tenantId=adf93120-af03-428d-8c62-8b1c29eac370&botId=67dd405be0571ec8772d30a6&uuid=94edbae1-1192-4fa7-8ff2-4cb3dced935d&end=true"            />
 
             {/* ✅ Додаємо inline-скрипт через dangerouslySetInnerHTML */}
             <Script
@@ -56,6 +55,7 @@ async src="https://stage-widget.intelswift.com/script.js?tenantId=edd30677-c5a4-
       }
     }
   };
+  
                     `,
                 }}
             />
