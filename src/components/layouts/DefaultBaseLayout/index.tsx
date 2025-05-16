@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 
 export default function DefaultBaseLayout() {
-    useEffect(() => {
-        const img = document.querySelector('img[alt="Full Screen"]');
-        if (img) {
-            // Примусово перезаписуємо стиль з !important
-            img.style.setProperty('object-fit', 'contain', 'important');
-            img.style.setProperty('width', '100%', 'important');
-            img.style.setProperty('height', '100%', 'important');
-        }
-    }, []);
+useEffect(() => {
+  const img = document.querySelector('img[alt="Full Screen"]');
+  if (img) {
+    (img as HTMLImageElement).style.setProperty('object-fit', 'contain', 'important');
+    (img as HTMLImageElement).style.setProperty('width', '100%', 'important');
+    (img as HTMLImageElement).style.setProperty('height', '100%', 'important');
+  }
+}, []);
+
 
     return (
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
