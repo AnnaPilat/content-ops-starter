@@ -65,4 +65,5 @@ async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b
             />
         </div>
     );
+      );
 
