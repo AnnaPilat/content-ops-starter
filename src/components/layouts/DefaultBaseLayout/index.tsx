@@ -23,8 +23,7 @@ useEffect(() => {
 
             {/* Зовнішній скрипт */}
             <Script
-                src="https://stage-widget.intelswift.com/script.js?tenantId=adf93120-af03-428d-8c62-8b1c29eac370&botId=67dd405be0571ec8772d30a6&uuid=94edbae1-1192-4fa7-8ff2-4cb3dced935d&end=true"
-                strategy="afterInteractive"
+async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b5b5-c890ee26399a&botId=6826a221b95e5d2c503d3e37&uuid=0e1dedcf-a678-4608-a75f-c244fb089a49&end=true"                strategy="afterInteractive"
             />
 
             {/* Inline-скрипт */}
@@ -33,27 +32,34 @@ useEffect(() => {
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                        window.onload = () => {
-                            const propsInterval = setInterval(widgetTimer, 1000);
-                            function widgetTimer() {
-                                const tenantId = localStorage.getItem("wws-tenant-id");
-                                const botId = localStorage.getItem("wws-bot-id");
-                                const uuid = localStorage.getItem("wws-uuid");
-                                const host = window.location.hostname;
-                                const language = navigator.language || navigator.userLanguage;
+                        window.onload = (event) => {
+    const propsInterval = setInterval(widgetTimer, 1000);
 
-                                if (uuid && tenantId && botId && host) {
-                                    clearInterval(propsInterval);
-                                    document.getElementById("iframeWidgetContainer")?.contentWindow?.postMessage({
-                                        tenantId,
-                                        botId,
-                                        uuid,
-                                        host,
-                                        contact_language: language
-                                    }, "*");
-                                }
-                            }
-                        };
+    function widgetTimer() {
+      const tenantId = localStorage.getItem("wws-tenant-id")
+      const botId = localStorage.getItem("wws-bot-id")
+      const uuid = localStorage.getItem("wws-uuid")
+      const host = window.location.hostname
+      const language = navigator.language || navigator.userLanguage; 
+
+      if(
+        (uuid && uuid != "undefined") && 
+        (tenantId && tenantId != "undefined") && 
+        (botId && botId != "undefined") && 
+        (host && host != "undefined")
+      ){
+        clearInterval(propsInterval);
+        document.getElementById("iframeWidgetContainer").contentWindow.postMessage( 
+        {
+          tenantId: tenantId,
+          botId: botId,
+          uuid: uuid,
+          host: host,
+          contact_language: language
+        },"*")
+      }
+    }
+  };
                     `,
                 }}
             />
