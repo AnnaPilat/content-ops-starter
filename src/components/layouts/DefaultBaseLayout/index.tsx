@@ -23,8 +23,7 @@ useEffect(() => {
 
             {/* Зовнішній скрипт */}
             <Script
-async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b5b5-c890ee26399a&botId=6826a221b95e5d2c503d3e37&uuid=0e1dedcf-a678-4608-a75f-c244fb089a49&end=true"                strategy="afterInteractive"
-            />
+async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b5b5-c890ee26399a&botId=6826a221b95e5d2c503d3e37&uuid=0e1dedcf-a678-4608-a75f-c244fb089a49&end=true"            />
 
             {/* Inline-скрипт */}
             <Script
@@ -32,7 +31,7 @@ async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                        window.onload = (event) => {
+                       window.onload = (event) => {
     const propsInterval = setInterval(widgetTimer, 1000);
 
     function widgetTimer() {
@@ -59,6 +58,7 @@ async src="https://widget.intelswift.com/script.js?tenantId=094f2d86-c31e-4a4c-b
         },"*")
       }
     }
+  };
   };
                     `,
                 }}
