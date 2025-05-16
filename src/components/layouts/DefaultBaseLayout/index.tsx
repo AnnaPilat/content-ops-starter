@@ -5,14 +5,10 @@ export default function DefaultBaseLayout() {
     return (
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
             <img
-                src="/images/checkbox.jpg" 
-                alt="Full Screen"
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                }}
-            />
+        src="/images/checkbox.jpg"
+        alt="Full Screen"
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      />
 
             {/* Зовнішній скрипт */}
             <Script
