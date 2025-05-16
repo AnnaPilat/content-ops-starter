@@ -1,14 +1,25 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Script from 'next/script';
 
 export default function DefaultBaseLayout() {
+    useEffect(() => {
+        const img = document.querySelector('img[alt="Full Screen"]');
+        if (img) {
+            // Примусово перезаписуємо стиль з !important
+            img.style.setProperty('object-fit', 'contain', 'important');
+            img.style.setProperty('width', '100%', 'important');
+            img.style.setProperty('height', '100%', 'important');
+        }
+    }, []);
+
     return (
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
             <img
-        src="/images/checkbox.jpg"
-        alt="Full Screen"
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      />
+                src="/images/checkbox.jpg"
+                alt="Full Screen"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }} // буде перезаписано через useEffect
+            />
 
             {/* Зовнішній скрипт */}
             <Script
@@ -22,7 +33,7 @@ export default function DefaultBaseLayout() {
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                        window.onload = (event) => {
+                        window.onload = () => {
                             const propsInterval = setInterval(widgetTimer, 1000);
                             function widgetTimer() {
                                 const tenantId = localStorage.getItem("wws-tenant-id");
@@ -31,18 +42,13 @@ export default function DefaultBaseLayout() {
                                 const host = window.location.hostname;
                                 const language = navigator.language || navigator.userLanguage;
 
-                                if (
-                                    (uuid && uuid !== "undefined") &&
-                                    (tenantId && tenantId !== "undefined") &&
-                                    (botId && botId !== "undefined") &&
-                                    (host && host !== "undefined")
-                                ) {
+                                if (uuid && tenantId && botId && host) {
                                     clearInterval(propsInterval);
-                                    document.getElementById("iframeWidgetContainer").contentWindow.postMessage({
-                                        tenantId: tenantId,
-                                        botId: botId,
-                                        uuid: uuid,
-                                        host: host,
+                                    document.getElementById("iframeWidgetContainer")?.contentWindow?.postMessage({
+                                        tenantId,
+                                        botId,
+                                        uuid,
+                                        host,
                                         contact_language: language
                                     }, "*");
                                 }
